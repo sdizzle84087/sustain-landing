@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sustain — Protect Everything You Own</title>
+<meta name="description" content="AI-powered home inventory, warranty tracking, and maintenance management. Never lose a warranty, miss a recall, or scramble during an insurance claim again.">
+<meta property="og:title" content="Sustain — Protect Everything You Own">
+<meta property="og:description" content="AI-powered warranty tracking, home inventory, and maintenance management for your most important things.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getsustain.app">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0B1120;
+    --bg-secondary: #131B2E;
+    --bg-card: #1A2340;
+    --bg-card-hover: #1F2B4D;
+    --green-primary: #4ADE80;
+    --green-glow: rgba(74, 222, 128, 0.15);
+    --green-dark: #16A34A;
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --red-accent: #EF4444;
+    --amber-accent: #F59E0B;
+    --blue-accent: #3B82F6;
+    --border: rgba(148, 163, 184, 0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 16px 0;
+    background: rgba(11, 17, 32, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  
+  .nav-logo span { color: var(--green-primary); }
+  
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .nav-links a:hover { color: var(--green-primary); }
+  
+  .nav-cta {
+    background: var(--green-primary) !important;
+    color: var(--bg-primary) !important;
+    padding: 10px 24px !important;
+    border-radius: 50px;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px var(--green-glow);
+  }
+
+  .mobile-menu { display: none; background: none; border: none; color: var(--text-primary); font-size: 28px; cursor: pointer; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, var(--green-glow) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: var(--bg-card);
+    border: 1px solid var(--green-primary);
+    color: var(--green-primary);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+    animation: fadeInUp 0.6s ease;
+  }
+  
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    animation: fadeInUp 0.6s ease 0.1s both;
+  }
+  
+  .hero h1 .highlight {
+    background: linear-gradient(135deg, var(--green-primary), #34D399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero p {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    animation: fadeInUp 0.6s ease 0.2s both;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.6s ease 0.3s both;
+  }
+  
+  .btn-primary {
+    background: var(--green-primary);
+    color: var(--bg-primary);
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--green-glow);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  
+  .btn-secondary:hover {
+    border-color: var(--green-primary);
+    color: var(--green-primary);
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 64px;
+    animation: fadeInUp 0.6s ease 0.4s both;
+  }
+
+  .hero-stat { text-align: center; }
+  .hero-stat-number { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--green-primary); }
+  .hero-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTIONS COMMON ===== */
+  section { padding: 100px 24px; }
+  
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  
+  .section-label {
+    display: inline-block;
+    color: var(--green-primary);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  
+  .section-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 60px;
+  }
+
+  /* ===== PROBLEM SECTION ===== */
+  .problem { background: var(--bg-secondary); }
+  
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  
+  .problem-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s;
+  }
+  
+  .problem-card:hover {
+    border-color: var(--red-accent);
+    transform: translateY(-4px);
+  }
+  
+  .problem-icon { font-size: 36px; margin-bottom: 16px; }
+  
+  .problem-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--red-accent);
+  }
+  
+  .problem-card p { color: var(--text-secondary); font-size: 15px; }
+
+  /* ===== FEATURES ===== */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  
+  .feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-primary), var(--green-dark));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .feature-card:hover {
+    border-color: rgba(74, 222, 128, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  
+  .feature-card:hover::after { opacity: 1; }
+  
+  .feature-icon { font-size: 32px; margin-bottom: 16px; }
+  
+  .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  
+  .feature-card p { color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+  
+  .feature-badge {
+    display: inline-block;
+    background: var(--green-glow);
+    color: var(--green-primary);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 16px;
+  }
+
+  .feature-badge.free {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--blue-accent);
+  }
+
+  /* ===== STORY ===== */
+  .story { background: var(--bg-secondary); }
+  
+  .story-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .story-content p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.8;
+  }
+  
+  .story-content p:first-of-type {
+    font-size: 20px;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  .story-content .highlight-text {
+    color: var(--green-primary);
+    font-weight: 600;
+  }
+
+  .story-quote {
+    border-left: 3px solid var(--green-primary);
+    padding: 24px 32px;
+    margin: 40px 0;
+    background: var(--bg-card);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .story-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px !important;
+    color: var(--text-primary) !important;
+    font-style: italic;
+    line-height: 1.6 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .story-quote cite {
+    font-style: normal;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  /* ===== RECALL SECTION ===== */
+  .recall-section {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(11, 17, 32, 1));
+  }
+
+  .recall-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .recall-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 20px;
+  }
+
+  .recall-text h2 span { color: var(--red-accent); }
+
+  .recall-text p {
+    color: var(--text-secondary);
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .recall-badge {
+    display: inline-block;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--red-accent);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .recall-visual {
+    background: var(--bg-card);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .recall-alert-demo {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+
+  .recall-alert-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .recall-alert-icon { font-size: 24px; }
+  .recall-alert-title { font-weight: 700; color: var(--red-accent); }
+  .recall-alert-body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  .recall-source {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  /* ===== PRICING ===== */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s;
+  }
+  
+  .pricing-card.featured {
+    border-color: var(--green-primary);
+    box-shadow: 0 0 40px var(--green-glow);
+  }
+  
+  .pricing-card.featured::before {
+    content: 'BEST VALUE';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green-primary);
+    color: var(--bg-primary);
+    padding: 4px 16px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  
+  .pricing-name { font-size: 14px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  
+  .pricing-price { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; margin-bottom: 4px; }
+  .pricing-price span { font-size: 18px; color: var(--text-muted); font-family: 'DM Sans', sans-serif; }
+  
+  .pricing-period { color: var(--text-muted); font-size: 14px; margin-bottom: 32px; }
+  
+  .pricing-features { list-style: none; text-align: left; margin-bottom: 32px; }
+  
+  .pricing-features li {
+    padding: 8px 0;
+    font-size: 15px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .pricing-features li::before {
+    content: '✓';
+    color: var(--green-primary);
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  
+  .pricing-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  
+  .pricing-btn.primary { background: var(--green-primary); color: var(--bg-primary); }
+  .pricing-btn.primary:hover { box-shadow: 0 4px 20px var(--green-glow); transform: translateY(-2px); }
+  .pricing-btn.secondary { border: 1px solid var(--border); color: var(--text-primary); }
+  .pricing-btn.secondary:hover { border-color: var(--green-primary); color: var(--green-primary); }
+
+  /* ===== FAQ ===== */
+  .faq { background: var(--bg-secondary); }
+  
+  .faq-list { max-width: 700px; margin: 0 auto; }
+  
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+  }
+  
+  .faq-question {
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+  }
+  
+  .faq-question:hover { color: var(--green-primary); }
+  
+  .faq-arrow { transition: transform 0.3s; font-size: 20px; color: var(--text-muted); }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  
+  .faq-item.open .faq-answer {
+    max-height: 200px;
+    padding-top: 16px;
+  }
+
+  /* ===== CTA ===== */
+  .cta {
+    text-align: center;
+    padding: 120px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+    opacity: 0.4;
+  }
+
+  .cta-content { position: relative; z-index: 1; }
+  
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    margin-bottom: 20px;
+  }
+
+  .cta p {
+    color: var(--text-secondary);
+    font-size: 18px;
+    margin-bottom: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--green-primary); }
+  .footer-copy { color: var(--text-muted); font-size: 14px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mobile-menu { display: block; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--bg-primary); padding: 24px; border-bottom: 1px solid var(--border); }
+    .hero-stats { gap: 24px; }
+    .recall-inner { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+
+  /* ===== LANGUAGES ===== */
+  .languages-bar {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .lang-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Sust<span>AI</span>n</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#story">Our Story</a>
+      <a href="#recall">Recalls</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app" class="nav-cta">Get the App</a>
+    </div>
+    <button class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🛡️ AI-Powered Protection for Your Home & Products</div>
+    <h1>Protect <span class="highlight">Everything</span> You Own</h1>
+    <p>Never lose a warranty, miss a product recall, or scramble during an insurance claim again. Sustain uses AI to track, protect, and maintain everything that matters.</p>
+    <div class="hero-buttons">
+      <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app" class="btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+        Download on Google Play
+      </a>
+      <a href="#features" class="btn-secondary">See Features</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">6</div>
+        <div class="hero-stat-label">Ways to Add Items</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">5</div>
+        <div class="hero-stat-label">Languages</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">Free</div>
+        <div class="hero-stat-label">Recall Alerts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-inner">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Life Doesn't Wait for You<br>to Find the Paperwork</h2>
+    <p class="section-subtitle">When something breaks, floods, or gets recalled, the last thing you should worry about is digging through filing cabinets.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">💧</div>
+        <h3>Warranties Expire Silently</h3>
+        <p>Your washing machine breaks two weeks after the warranty expired. You didn't even know when it ended. That's hundreds — sometimes thousands — out of pocket.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🔥</div>
+        <h3>Recalls Go Unnoticed</h3>
+        <p>Products in your home could be recalled right now. Unless you're checking the CPSC database regularly (you're not), you'd never know until it's too late.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📋</div>
+        <h3>Insurance Claims Are Chaos</h3>
+        <p>Your basement floods. Insurance asks: "What did you own, what was it worth, and can you prove it?" Most people can't answer. That costs them thousands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">One App. Complete Protection.</h2>
+    <p class="section-subtitle">AI-powered tools that work together to protect your home, your purchases, and your peace of mind.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <h3>AI Product Identification</h3>
+        <p>Point your camera at any product and Sustain identifies it instantly. Snap a model sticker, screenshot a product page, or paste a URL — we extract every detail automatically.</p>
+        <span class="feature-badge">PREMIUM</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Warranty Tracking</h3>
+        <p>Track every warranty with automatic expiration alerts at 90, 30, and 7 days. Never miss a claim window again. AI looks up warranty terms so you don't have to.</p>
+        <span class="feature-badge">PREMIUM AI / FREE TRACKING</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏠</div>
+        <h3>Home Inventory</h3>
+        <p>Catalog everything you own with photos, values, and locations. Set up your home profile and get personalized room-by-room organization.</p>
+        <span class="feature-badge free">FREE</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚨</div>
+        <h3>Product Recall Alerts</h3>
+        <p>Automatically checks your items against the official U.S. CPSC recall database. Get alerted if anything you own has been recalled. Because safety shouldn't have a paywall.</p>
+        <span class="feature-badge free">FREE FOR EVERYONE</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔧</div>
+        <h3>Maintenance Plans</h3>
+        <p>AI generates custom maintenance schedules for your home items. Get seasonal reminders, track service history, and know exactly when things need attention.</p>
+        <span class="feature-badge">PREMIUM</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <h3>Insurance-Ready PDF Export</h3>
+        <p>Generate a complete home inventory report in one tap. Photos, values, serial numbers — everything an insurance adjuster needs, formatted professionally.</p>
+        <span class="feature-badge">PREMIUM</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>AI Claim Assistant</h3>
+        <p>Not sure if something is covered? Ask the AI assistant. It knows your warranties, understands coverage terms, and helps draft claim language that gets approved.</p>
+        <span class="feature-badge">PREMIUM</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Budget & Replacement Planner</h3>
+        <p>Track the lifespan of everything you own. Know what needs replacing soon and plan your budget accordingly. No more surprise expenses.</p>
+        <span class="feature-badge free">FREE</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>5 Languages & 9 Currencies</h3>
+        <p>Available in English, Spanish, Portuguese, French, and German. Display prices in USD, EUR, GBP, and more. Built for a global audience from day one.</p>
+        <span class="feature-badge free">FREE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECALL SECTION -->
+<section class="recall-section" id="recall">
+  <div class="section-inner">
+    <div class="recall-inner">
+      <div class="recall-text">
+        <div class="section-label">Safety First</div>
+        <h2>Your Products Might Be <span>Recalled</span> Right Now</h2>
+        <p>Sustain automatically checks every item you track against the official U.S. Consumer Product Safety Commission database. If something you own has been recalled, you'll know immediately.</p>
+        <p>This feature is <strong style="color: var(--green-primary);">completely free</strong> — because we believe safety information should never be locked behind a paywall.</p>
+        <div class="recall-badge">🇺🇸 Powered by the U.S. CPSC Official Database</div>
+      </div>
+      <div class="recall-visual">
+        <div class="recall-alert-demo">
+          <div class="recall-alert-header">
+            <span class="recall-alert-icon">⚠️</span>
+            <span class="recall-alert-title">Potential Recall Found</span>
+          </div>
+          <div class="recall-alert-body">
+            <strong>Your item:</strong> ThermoSafe Space Heater<br>
+            <strong>Recall:</strong> Fire hazard due to overheating element<br>
+            <strong>Action:</strong> Stop using immediately. Contact manufacturer for free replacement.
+          </div>
+        </div>
+        <div class="recall-alert-demo" style="border-color: rgba(74, 222, 128, 0.3); background: rgba(74, 222, 128, 0.05);">
+          <div class="recall-alert-header">
+            <span class="recall-alert-icon">✅</span>
+            <span class="recall-alert-title" style="color: var(--green-primary);">No Recalls Found</span>
+          </div>
+          <div class="recall-alert-body">
+            <strong>Samsung Galaxy S25 Ultra</strong><br>
+            Last checked: Today<br>
+            No matching recalls in the CPSC database.
+          </div>
+        </div>
+        <div class="recall-source">Data sourced from CPSC.gov — updated daily</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="section-inner">
+    <div class="section-label">Why We Built This</div>
+    <h2 class="section-title" style="text-align: center;">Born from Real Life Chaos</h2>
+    <div class="story-content" style="margin-top: 48px;">
+      <p>Last April, my 3-year-old daughter was diagnosed with leukemia. That same night — literally hours later — my wife went into labor and gave birth to our son on the couch of my daughter's hospital room.</p>
+      
+      <p>Two weeks later, our daughter was back in the hospital with complications. A few weeks after that, our washing machine flooded our house from the second floor to the basement. <span class="highlight-text">It wasn't under warranty anymore.</span> Insurance fought us on every dollar.</p>
+      
+      <p>I was patching drywall at midnight between hospital visits and diaper changes, trying to figure out which items were still covered and which weren't. Six months later, our basement flooded again from a storm. Same insurance fights. Same scramble to document everything.</p>
+
+      <div class="story-quote">
+        <p>No family should have to dig through filing cabinets during the worst moments of their lives trying to find a warranty document or prove what they own.</p>
+        <cite>— Jay, Founder of Sustain</cite>
+      </div>
+
+      <p>That's when I decided to build Sustain. Not because I wanted to be a tech founder — I'm a data analyst, not a developer. But because the tools I needed simply didn't exist. So I built them, powered by AI, to help other families avoid the chaos mine went through.</p>
+      
+      <p>My daughter has a <span class="highlight-text">97% cure rate</span> and is doing amazing. My son is healthy and growing. And now I'm channeling everything I learned into an app that protects what matters most — so when life throws you the unexpected, paperwork is the last thing on your mind.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-label" style="text-align: center; display: block;">Pricing</div>
+    <h2 class="section-title" style="text-align: center;">Start Free. Upgrade When<br>You're Ready.</h2>
+    <p class="section-subtitle" style="text-align: center; margin: 0 auto 60px;">Track unlimited items for free. Unlock AI superpowers with Premium.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-name">Free</div>
+        <div class="pricing-price">$0<span>/forever</span></div>
+        <div class="pricing-period">No credit card needed</div>
+        <ul class="pricing-features">
+          <li>Unlimited item tracking</li>
+          <li>Product recall alerts</li>
+          <li>Barcode scanning</li>
+          <li>Budget & replacement planner</li>
+          <li>Home profile & room setup</li>
+          <li>Warranty expiration alerts</li>
+          <li>5 languages, 9 currencies</li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app" class="pricing-btn secondary">Get Started Free</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-name">Premium</div>
+        <div class="pricing-price">$3<span>/mo</span></div>
+        <div class="pricing-period">$35.99/year — Save 40%</div>
+        <ul class="pricing-features">
+          <li>Everything in Free</li>
+          <li>AI photo identification</li>
+          <li>Product page scanning</li>
+          <li>URL product lookup</li>
+          <li>AI Claim & Coverage Assistant</li>
+          <li>Receipt scanning</li>
+          <li>AI maintenance plans</li>
+          <li>PDF export for insurance</li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app" class="pricing-btn primary">Start Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <div class="section-label" style="text-align: center; display: block;">FAQ</div>
+    <h2 class="section-title" style="text-align: center;">Frequently Asked Questions</h2>
+    <div class="faq-list" style="margin-top: 48px;">
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is Sustain really free to use?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">Yes! You can track unlimited items, get product recall alerts, use barcode scanning, and set up warranty expiration reminders — all completely free, forever. Premium unlocks AI-powered features like photo identification, product page scanning, the claim assistant, and PDF export.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How does the recall checking work?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">Sustain automatically checks every item you add against the official U.S. Consumer Product Safety Commission (CPSC) database. If a product you own has been recalled, you'll get an alert with details and instructions. Checks happen automatically in the background and are completely free.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is my data secure?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">Absolutely. Your data is encrypted and stored securely on Supabase (built on PostgreSQL with row-level security). We never sell your data, and we don't show ads. Your inventory is private to your account.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Can I use it for insurance claims?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">Yes — that's one of the core use cases. Premium users can generate a complete home inventory PDF with photos, serial numbers, purchase prices, and replacement values. This report gives insurance adjusters exactly what they need, which can save you thousands during a claim.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What languages are supported?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">Sustain is available in English, Spanish, Portuguese, French, and German. The AI features (chat assistant, warranty lookups, maintenance plans) also respond in your selected language. More languages coming soon.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is it available on iPhone?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">Not yet — Sustain is currently Android-only. iOS is on our roadmap and we'll announce it when it's ready. Sign up for updates at support@getsustain.app.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Who built this?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">Sustain was built by Jay, a data analyst and father in Salt Lake City. After his family experienced a cancer diagnosis, emergency birth, and two home floods in one year, he built the app he wished existed — to help families protect what matters most without the chaos of paperwork and lost receipts.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-content">
+    <h2 class="section-title">Ready to <span style="color: var(--green-primary);">Protect</span> What You Own?</h2>
+    <p>Join thousands of homeowners who are tracking their warranties, monitoring recalls, and preparing for the unexpected.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app" class="btn-primary" style="font-size: 18px; padding: 18px 48px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+      Download Sustain Free
+    </a>
+    <div class="languages-bar">
+      <span class="lang-item">🇺🇸 English</span>
+      <span class="lang-item">🇪🇸 Español</span>
+      <span class="lang-item">🇧🇷 Português</span>
+      <span class="lang-item">🇫🇷 Français</span>
+      <span class="lang-item">🇩🇪 Deutsch</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; 2026 Sustain. Protect Everything You Own.</span>
+    <div class="footer-links">
+      <a href="https://sdizzle84087.github.io/sustain-privacy/">Privacy Policy</a>
+      <a href="mailto:support@getsustain.app">Contact</a>
+      <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app">Google Play</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
