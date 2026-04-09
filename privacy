@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustain — Privacy Policy</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #0A0F1A;
+            color: #E2E8F0;
+        }
+        h1 { color: #3B82F6; font-size: 28px; }
+        h2 { color: #3B82F6; font-size: 20px; margin-top: 32px; }
+        h3 { color: #94A3B8; font-size: 16px; }
+        a { color: #3B82F6; }
+        .updated { color: #94A3B8; font-size: 14px; }
+        .section { margin-bottom: 24px; }
+        ul { padding-left: 24px; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Sustain — Privacy Policy</h1>
+    <p class="updated">Last updated: March 20, 2026</p>
+
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>Sustain ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application ("Sustain" or the "App"). Please read this policy carefully. By using the App, you agree to the collection and use of information in accordance with this policy.</p>
+    </div>
+
+    <div class="section">
+        <h2>Information We Collect</h2>
+        
+        <h3>Account Information</h3>
+        <p>When you create an account, we collect your email address and a password (encrypted). This is required to provide you with a personalized experience and sync your data across devices.</p>
+
+        <h3>User-Provided Content</h3>
+        <p>We collect information you voluntarily provide, including:</p>
+        <ul>
+            <li>Warranty and product details (product names, purchase dates, prices, serial numbers, coverage information)</li>
+            <li>Home inventory items (appliances, systems, condition, location, brand, model numbers)</li>
+            <li>Maintenance task information (schedules, service history, service provider details)</li>
+            <li>Insurance policy information (provider, policy numbers, deductibles)</li>
+            <li>Vehicle information (make, model, VIN, mileage)</li>
+            <li>Photos of receipts, product labels, and proof of purchase</li>
+            <li>Chat conversations with our AI assistant</li>
+            <li>Notes and custom entries</li>
+        </ul>
+
+        <h3>Automatically Collected Information</h3>
+        <p>We may automatically collect certain information when you use the App, including:</p>
+        <ul>
+            <li>Device information (device type, operating system version)</li>
+            <li>App usage data and analytics (features used, screens visited)</li>
+            <li>Crash logs and performance data</li>
+            <li>Device identifiers for analytics purposes</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>How We Use Your Information</h2>
+        <p>We use your information to:</p>
+        <ul>
+            <li>Provide, maintain, and improve the App's functionality</li>
+            <li>Store and sync your warranty, home inventory, and maintenance data</li>
+            <li>Generate AI-powered warranty lookups, product identification, maintenance recommendations, and claim assistance</li>
+            <li>Send you warranty expiration and maintenance reminder notifications</li>
+            <li>Process referral codes and Premium subscription features</li>
+            <li>Monitor app performance and fix bugs</li>
+            <li>Respond to your support requests</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>AI-Powered Features</h2>
+        <p>Sustain uses AI (powered by Anthropic's Claude) to provide features such as warranty lookups, product identification from photos, maintenance plan generation, and chat-based claim assistance. When you use these features:</p>
+        <ul>
+            <li>Your product information and photos are sent to Anthropic's API for processing</li>
+            <li>AI-generated results (warranty details, product identification, maintenance tasks) are stored in your account</li>
+            <li>Chat conversations with the AI assistant are stored for your reference</li>
+            <li>We do not use your data to train AI models</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Data Storage and Security</h2>
+        <p>Your data is stored securely using Supabase, a trusted cloud platform with enterprise-grade security. All data is:</p>
+        <ul>
+            <li>Encrypted in transit using TLS/SSL</li>
+            <li>Stored in secure, access-controlled databases</li>
+            <li>Photos stored in private, authenticated storage buckets</li>
+            <li>Accessible only to you through your authenticated account</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Third-Party Services</h2>
+        <p>We use the following third-party services:</p>
+        <ul>
+            <li><strong>Supabase</strong> — Database, authentication, and file storage</li>
+            <li><strong>Anthropic (Claude AI)</strong> — AI-powered features (warranty lookup, product identification, chat assistant, maintenance recommendations)</li>
+            <li><strong>Sentry</strong> — Crash reporting and error monitoring</li>
+            <li><strong>Firebase Analytics</strong> — App usage analytics</li>
+            <li><strong>Expo / EAS</strong> — App build and update services</li>
+        </ul>
+        <p>These services have their own privacy policies. We do not sell your personal data to any third party.</p>
+    </div>
+
+    <div class="section">
+        <h2>Shared Product Database</h2>
+        <p>When you look up warranty or product information, the results may be saved to a shared database to help other users find the same information faster. This shared data includes only general product information (product name, brand, typical warranty length, coverage details) and never includes your personal data, purchase details, serial numbers, or photos.</p>
+    </div>
+
+    <div class="section">
+        <h2>Data Sharing</h2>
+        <p>We do not sell, trade, or rent your personal information. We may share anonymized, aggregated data for analytics purposes. Your personal data is only shared with the third-party services listed above as necessary to provide App functionality.</p>
+    </div>
+
+    <div class="section">
+        <h2>Your Rights and Choices</h2>
+        <p>You have the right to:</p>
+        <ul>
+            <li><strong>Access your data</strong> — All your data is visible within the App</li>
+            <li><strong>Delete individual items</strong> — Remove any warranty, home item, or maintenance task at any time</li>
+            <li><strong>Delete your account</strong> — Use the "Delete Account" feature in Settings to permanently remove your account and all associated data, including warranties, home inventory, maintenance tasks, chat history, photos, and referral information</li>
+            <li><strong>Opt out of notifications</strong> — Disable push notifications in Settings</li>
+            <li><strong>Contact us</strong> — Request information about your data or ask questions</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Children's Privacy</h2>
+        <p>Sustain is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If we discover that a child under 13 has provided us with personal information, we will promptly delete it.</p>
+    </div>
+
+    <div class="section">
+        <h2>Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy within the App and updating the "Last updated" date above. You are advised to review this Privacy Policy periodically.</p>
+    </div>
+
+    <div class="section">
+        <h2>Contact Us</h2>
+        <p>If you have questions about this Privacy Policy or your data, please contact us at:</p>
+        <p>Email: <a href="mailto:support@getsustain.app">support@getsustain.app</a></p>
+    </div>
+
+    <div class="section" style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #1E293B;">
+        <p style="color: #64748B; font-size: 13px; text-align: center;">© 2026 Sustain. All rights reserved.</p>
+    </div>
+</body>
+</html>
