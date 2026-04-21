@@ -517,31 +517,6 @@
   
   .pricing-period { color: var(--text-muted); font-size: 14px; margin-bottom: 32px; }
   
-  .annual-deal {
-    background: linear-gradient(135deg, rgba(74, 222, 128, 0.15), rgba(74, 222, 128, 0.05));
-    border: 1px solid rgba(74, 222, 128, 0.4);
-    border-radius: 12px;
-    padding: 12px 20px;
-    margin-bottom: 32px;
-    text-align: center;
-  }
-  .annual-deal-price {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--green-primary);
-  }
-  .annual-deal-savings {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--green-primary);
-    margin-top: 4px;
-  }
-  .annual-deal-monthly {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-  
   .pricing-features { list-style: none; text-align: left; margin-bottom: 32px; }
   
   .pricing-features li {
@@ -732,13 +707,17 @@
     <div class="hero-buttons">
       <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app" class="btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-        Download on Google Play
+        Google Play
+      </a>
+      <a href="https://apps.apple.com/us/app/sustain-protect-what-you-own/id6761861132" class="btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/></svg>
+        App Store
       </a>
       <a href="#features" class="btn-secondary">See Features</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-number">6</div>
+        <div class="hero-stat-number">7</div>
         <div class="hero-stat-label">Ways to Add Items</div>
       </div>
       <div class="hero-stat">
@@ -932,12 +911,8 @@
       </div>
       <div class="pricing-card featured">
         <div class="pricing-name">Premium</div>
-        <div class="pricing-price">$4.99<span>/mo</span></div>
-        <div class="annual-deal">
-          <div class="annual-deal-price">$35.99/year</div>
-          <div class="annual-deal-savings">🎉 Save 40% with annual</div>
-          <div class="annual-deal-monthly">That's just $3.00/mo</div>
-        </div>
+        <div class="pricing-price">$3<span>/mo</span></div>
+        <div class="pricing-period">$35.99/year — Save 40%</div>
         <ul class="pricing-features">
           <li>Everything in Free</li>
           <li>AI photo identification</li>
@@ -1000,7 +975,7 @@
           Is it available on iPhone?
           <span class="faq-arrow">▼</span>
         </div>
-        <div class="faq-answer">Not yet — Sustain is currently Android-only. iOS is on our roadmap and we'll announce it when it's ready. Sign up for updates at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c5f595c5c435e586c4b49585f595f584d4542024d5c5c">[email&#160;protected]</a>.</div>
+        <div class="faq-answer">Yes! Sustain is available on both iOS and Android. <a href="https://apps.apple.com/us/app/sustain-protect-what-you-own/id6761861132" style="color: var(--green-primary);">Download on the App Store</a> or <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app" style="color: var(--green-primary);">Google Play</a>.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
@@ -1018,10 +993,16 @@
   <div class="cta-content">
     <h2 class="section-title">Ready to <span style="color: var(--green-primary);">Protect</span> What You Own?</h2>
     <p>Join thousands of homeowners who are tracking their warranties, monitoring recalls, and preparing for the unexpected.</p>
-    <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app" class="btn-primary" style="font-size: 18px; padding: 18px 48px;">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-      Download Sustain Free
-    </a>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app" class="btn-primary" style="font-size: 18px; padding: 18px 36px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+        Google Play
+      </a>
+      <a href="https://apps.apple.com/us/app/sustain-protect-what-you-own/id6761861132" class="btn-primary" style="font-size: 18px; padding: 18px 36px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/></svg>
+        App Store
+      </a>
+    </div>
     <div class="languages-bar">
       <span class="lang-item">🇺🇸 English</span>
       <span class="lang-item">🇪🇸 Español</span>
@@ -1037,5 +1018,15 @@
   <div class="footer-inner">
     <span class="footer-copy">&copy; 2026 Sustain. Protect Everything You Own.</span>
     <div class="footer-links">
-      <a href="https://getsustain.app/privacy.html">Privacy Policy</a>
-      <a href="/cdn-cgi/l/email-protection#35464045455a47417552504146404641
+      <a href="https://sdizzle84087.github.io/sustain-privacy/">Privacy Policy</a>
+      <a href="https://getsustain.app/terms.html">Terms of Service</a>
+      <a href="mailto:support@getsustain.app">Contact</a>
+      <a href="https://play.google.com/store/apps/details?id=com.getcovrd.app">Google Play</a>
+      <a href="https://apps.apple.com/us/app/sustain-protect-what-you-own/id6761861132">App Store</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
