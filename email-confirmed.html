@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Sustain</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 64px 20px;
+            background: #0A0F1A;
+            color: #E2E8F0;
+            text-align: center;
+        }
+        h1 { color: #3B82F6; font-size: 24px; }
+    </style>
+</head>
+<body>
+    <h1 id="title"></h1>
+    <p id="message"></p>
+    <script>
+        // No external script runs on this page, and a fragment never reaches the web server.
+        var WORDS = {
+            en: {
+                confirmed: ['Your email is confirmed', 'Go back to the Sustain app and sign in.'],
+                expired: ['This link has expired or was already used', 'Go back to the Sustain app and sign in.'],
+                neutral: ['Sustain', 'To use your account, go back to the Sustain app and sign in.']
+            },
+            es: {
+                confirmed: ['Tu correo está confirmado', 'Vuelve a la app de Sustain e inicia sesión.'],
+                expired: ['Este enlace ha caducado o ya se usó', 'Vuelve a la app de Sustain e inicia sesión.'],
+                neutral: ['Sustain', 'Para usar tu cuenta, vuelve a la app de Sustain e inicia sesión.']
+            },
+            pt: {
+                confirmed: ['Seu e-mail está confirmado', 'Volte ao app Sustain e entre.'],
+                expired: ['Este link expirou ou já foi usado', 'Volte ao app Sustain e entre.'],
+                neutral: ['Sustain', 'Para usar sua conta, volte ao app Sustain e entre.']
+            },
+            fr: {
+                confirmed: ['Votre e-mail est confirmé', 'Revenez dans l’application Sustain et connectez-vous.'],
+                expired: ['Ce lien a expiré ou a déjà été utilisé', 'Revenez dans l’application Sustain et connectez-vous.'],
+                neutral: ['Sustain', 'Pour utiliser votre compte, revenez dans l’application Sustain et connectez-vous.']
+            },
+            de: {
+                confirmed: ['Deine E-Mail ist bestätigt', 'Geh zurück zur Sustain-App und melde dich an.'],
+                expired: ['Dieser Link ist abgelaufen oder wurde schon benutzt', 'Geh zurück zur Sustain-App und melde dich an.'],
+                neutral: ['Sustain', 'Um dein Konto zu nutzen, geh zurück zur Sustain-App und melde dich an.']
+            }
+        };
+
+        // "Confirmed" needs the server's positive signal. A reload, a direct visit or another kind of link gets words that promise nothing.
+        function outcome(fragment) {
+            var params = new URLSearchParams(fragment.replace(/^#/, ''));
+            if (params.get('type') === 'signup' && params.get('access_token')) return 'confirmed';
+            if (params.get('error_code') === 'otp_expired') return 'expired';
+            return 'neutral';
+        }
+
+        var language = (navigator.language || 'en').split('-')[0];
+        var words = WORDS[language] || WORDS.en;
+        var shown = words[outcome(location.hash)];
+        // Removes the sign-in details from the address bar, read first because a reload then has nothing to read.
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+        document.documentElement.lang = WORDS[language] ? language : 'en';
+        document.getElementById('title').textContent = shown[0];
+        document.getElementById('message').textContent = shown[1];
+    </script>
+</body>
+</html>
